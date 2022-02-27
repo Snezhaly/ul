@@ -1,0 +1,31 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ConsoleApp17
+{
+    public class ListStack
+    {
+        private int MinimumValue;
+        private readonly Stack<int> Stack = new Stack<int>();
+
+        public void Push(int value)
+        {
+            if (value <= MinimumValue) Stack.Push(value);
+            Push(value);
+        }
+
+        public int Pop()
+        {
+            var value = Pop();
+            if (value == MinimumValue) Stack.Pop();
+            return value;
+        }
+       
+        public int GetMinimum()
+        {
+            return MinimumValue;
+        }
+
+    }
