@@ -1,0 +1,31 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace ConsoleApp18
+{
+    public class DoubleStack
+    {
+        private Stack<string> Stack1 = new Stack<string>();
+        private Stack<string> Stack2 = new Stack<string>();
+
+
+        public void Dequeue(string value)
+        {
+            while (Stack2.Count > 0) Stack1.Push(Stack2.Pop());
+            Stack1.Push(value);
+        }
+
+        public string Enqueue()
+        {
+            while (Stack1.Count > 0) Stack2.Push(Stack1.Pop());
+
+            var value = Stack2.Pop();
+
+            while (Stack2.Count > 0) Stack1.Push(Stack2.Pop());
+
+            return value;
+        }
+    }
+}
