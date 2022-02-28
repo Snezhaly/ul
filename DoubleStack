@@ -11,21 +11,15 @@ namespace ConsoleApp18
         private Stack<string> Stack2 = new Stack<string>();
 
 
-        public void Dequeue(string value)
+        public void Enqueue(string value)
         {
-            while (Stack2.Count > 0) Stack1.Push(Stack2.Pop());
             Stack1.Push(value);
         }
 
-        public string Enqueue()
+        public string Dequeue()
         {
-            while (Stack1.Count > 0) Stack2.Push(Stack1.Pop());
-
-            var value = Stack2.Pop();
-
-            while (Stack2.Count > 0) Stack1.Push(Stack2.Pop());
-
-            return value;
+            if (Stack2.Count == 0)
+                while (Stack1.Count > 0) Stack2.Push(Stack1.Pop());
+            return Stack2.Pop();
         }
-    }
 }
